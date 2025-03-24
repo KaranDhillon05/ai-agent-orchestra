@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>AI Agent Orchestra</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="logo.svg" alt="AI Agent Orchestra Logo" width="40" height="40">
+        <h1>AI Agent Orchestra</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" class="active" data-page="dashboard">Dashboard</a></li>
+          <li><a href="#" data-page="agents">Agents</a></li>
+          <li><a href="#" data-page="tasks">Tasks</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Dashboard Page -->
+    <section id="dashboard" class="page active">
+      <h2>Dashboard</h2>
+      <p>Welcome to the AI Agent Orchestra system. This dashboard provides an overview of your system status and recent activities.</p>
+
+      <div class="status-cards">
+        <div class="card">
+          <h3>System Status</h3>
+          <div class="status">
+            <span class="status-indicator online"></span>
+            <span class="status-text">Operational</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Agents</h3>
+          <div class="count" id="agent-count">Loading...</div>
+        </div>
+        <div class="card">
+          <h3>Tasks</h3>
+          <div class="count" id="task-count">Loading...</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <h3>Quick Actions</h3>
+        <div class="button-group">
+          <button class="btn primary" id="create-task-btn">Create New Task</button>
+          <button class="btn secondary" id="view-agents-btn">View All Agents</button>
+          <button class="btn secondary" id="view-tasks-btn">View All Tasks</button>
+        </div>
+      </div>
+
+      <div class="recent-tasks">
+        <div class="section-header">
+          <h3>Recent Tasks</h3>
+          <a href="#" class="view-all" data-page="tasks">View all</a>
+        </div>
+        <div id="recent-tasks-list" class="task-list">
+          <div class="loading">Loading recent tasks...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agents Page -->
+    <section id="agents" class="page">
+      <h2>Agents</h2>
+      <p>View and manage the specialized AI agents in your orchestra.</p>
+
+      <div id="agents-list" class="agents-grid">
+        <div class="loading">Loading agents...</div>
+      </div>
+    </section>
+
+    <!-- Tasks Page -->
+    <section id="tasks" class="page">
+      <h2>Tasks</h2>
+      <p>View and manage tasks processed by the AI Agent Orchestra.</p>
+
+      <div class="actions">
+        <button class="btn primary" id="create-task-btn-2">Create New Task</button>
+      </div>
+
+      <div class="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="pending">Pending</button>
+        <button class="filter" data-filter="in_progress">In Progress</button>
+        <button class="filter" data-filter="completed">Completed</button>
+        <button class="filter" data-filter="failed">Failed</button>
+      </div>
+
+      <div id="tasks-list" class="task-list">
+        <div class="loading">Loading tasks...</div>
+      </div>
+    </section>
+
+    <!-- Create Task Page -->
+    <section id="create-task" class="page">
+      <h2>Create New Task</h2>
+      <p>Submit a new task to be processed by the AI Agent Orchestra.</p>
+
+      <form id="task-form">
+        <div class="form-group">
+          <label for="query">Query <span class="required">*</span></label>
+          <textarea id="query" name="query" rows="5" placeholder="Enter your task or question here..." required></textarea>
+          <p class="help-text">Describe the task you want the AI Agent Orchestra to process.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="context">Context (Optional)</label>
+          <textarea id="context" name="context" rows="5" placeholder='{"key": "value"}'></textarea>
+          <p class="help-text">Additional context in JSON format to help the agents understand the task better.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="priority">Priority</label>
+          <select id="priority" name="priority">
+            <option value="low">Low</option>
+            <option value="normal" selected>Normal</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn secondary" id="cancel-task-btn">Cancel</button>
+          <button type="submit" class="btn primary" id="submit-task-btn">Create Task</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Task Detail Page -->
+    <section id="task-detail" class="page">
+      <div class="back-link">
+        <a href="#" data-page="tasks">&larr; Back to Tasks</a>
+      </div>
+
+      <div id="task-detail-content">
+        <div class="loading">Loading task details...</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal for Agent Details -->
+  <div id="agent-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="agent-detail-content">
+        <div class="loading">Loading agent details...</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 AI Agent Orchestra. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
